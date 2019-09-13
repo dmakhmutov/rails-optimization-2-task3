@@ -12,7 +12,17 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
+require 'rake'
+
 RSpec.configure do |config|
+  config.define_derived_metadata(:file_path => %r{/spec/tasks/}) do |metadata|
+    metadata[:type] = :task
+  end
+
+  config.before(:suite) do
+    Rails.application.load_tasks
+  end
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   config.use_transactional_fixtures = true

@@ -12,13 +12,10 @@ gem 'activerecord-import', '~> 1.0'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.8'
-  gem 'rack-mini-profiler'
+  gem 'rack-mini-profiler', require: false
 end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-end
-
-group :test do
 end
